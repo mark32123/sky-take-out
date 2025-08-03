@@ -36,7 +36,7 @@ public class EmployeeController {
     private JwtProperties jwtProperties;
 
     /**
-     * 登录
+     * 登录login
      *
      * @param employeeLoginDTO
      * @return
@@ -67,7 +67,7 @@ public class EmployeeController {
     }
 
     /**
-     * 退出
+     * 退出logout
      *
      * @return
      */
@@ -78,7 +78,7 @@ public class EmployeeController {
     }
 
     /**
-     * 获取员工信息
+     * 获取员工信息save
      *
      * @param employeeDTO
      * @return
@@ -92,7 +92,7 @@ public class EmployeeController {
     }
 
     /**
-     * 分页查询
+     * 分页查询page
      * @param employeePageQueryDTO
      * @return
      */
@@ -105,7 +105,7 @@ public class EmployeeController {
     }
 
     /**
-     * 启用禁用员工账号
+     * 启用禁用员工账号startOrStop
      * @param status
      * @param id
      * @return
@@ -115,6 +115,32 @@ public class EmployeeController {
     public Result startOrStop(@PathVariable Integer status, Long id){
         log.info("员工状态：{}，员工id：{}", status, id);
         employeeService.startOrStop(status, id);
+        return Result.success();
+    }
+
+    /**
+     * 根据id查询员工信息getById
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    @ApiOperation("根据id查询员工信息")
+    public Result<Employee> getById(@PathVariable Long id) {
+        log.info("员工id：{}", id);
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
+    }
+
+    /**
+     * 编辑员工信息update
+     * @param employeeDTO
+     * @return
+     */
+    @PutMapping
+    @ApiOperation("编辑员工信息")
+    public Result update(@RequestBody EmployeeDTO employeeDTO){
+        log.info("员工信息：{}", employeeDTO);
+        employeeService.update(employeeDTO);
         return Result.success();
     }
 }
