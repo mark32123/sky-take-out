@@ -12,3 +12,8 @@ sky:
     access-key-secret: pugtLo25IDMJQtJd5yyNC07eVLCGKT
     bucket-name: sky-waimai-mark
     endpoint: oss-cn-shenzhen.aliyuncs.com
+
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
