@@ -40,7 +40,7 @@ public interface SetmealMapper {
     Page<SetmealVO> pageQuery(SetmealPageQueryDTO setmealPageQueryDTO);
 
     /**
-     * 根据id查询
+     * 根据id删除
      * @param setmealId
      */
     @Delete("delete from setmeal where id = #{id}")
@@ -93,4 +93,11 @@ public interface SetmealMapper {
      * @return
      */
     Integer countByMap(Map map);
+
+    /**
+     * 根据id查询套餐和套餐菜品关系
+     * @param id
+     * @return
+     */
+    SetmealVO getByIdWithDish(Long id);
 }
